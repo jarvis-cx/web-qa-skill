@@ -31,7 +31,8 @@
     "cleanupAfterHours": 24
   },
   "knownJobs": {
-    "done": "tfzzury7"
+    "done": "tfzzury7",
+    "unpaid": "rvtyd1bf"
   },
   "resendDomainId": "eb7af0de-51a8-484f-a437-aecd5061bdc9",
   "checks": {

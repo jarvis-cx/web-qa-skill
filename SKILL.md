@@ -59,6 +59,7 @@ Run ALL of these using `exec` with `curl`. Do NOT use the browser tool.
 | F5 | webhook-auth | `curl -s -o /dev/null -w "%{http_code}" -X PATCH {baseUrl}/api/webhook/status-update` | HTTP 401 or 403 |
 | F6 | resend-domain | `curl -s -H "Authorization: Bearer {RESEND_API_KEY}" https://api.resend.com/domains/{resendDomainId}` | Body contains `"verified"` |
 | F7 | supabase-count | `curl -s -H "apikey: {SERVICE_KEY}" -H "Authorization: Bearer {SERVICE_KEY}" "{SUPABASE_URL}/rest/v1/jobs?select=count" ` | Returns valid JSON with a count |
+| F8 | stripe-checkout | `curl -s -X POST {baseUrl}/api/stripe/checkout -H "Content-Type: application/json" -d '{"shortId":"{knownJobs.unpaid}"}'` | HTTP 200 AND body contains `"url"` AND body contains `"stripe.com"` |
 
 **Severity:** P1 🟠 — alert during 08:00–23:00 HKT only. Outside quiet hours, queue for digest.
 

@@ -1,0 +1,56 @@
+{
+  "project": "triptrust",
+  "name": "TripTrust",
+  "baseUrl": "https://www.triptrust.co",
+  "alertChannel": "telegram",
+  "alertTarget": "75780983",
+  "digestTime": "09:00",
+  "timezone": "Asia/Hong_Kong",
+  "stateFile": "~/.openclaw/workspace/memory/web-qa-state.json",
+  "secrets": {
+    "supabaseUrl": {
+      "keychain": "SUPABASE_URL"
+    },
+    "supabaseServiceKey": {
+      "keychain": "SUPABASE_SERVICE_ROLE_KEY"
+    },
+    "resendKey": {
+      "keychain": "RESEND_API_KEY"
+    }
+  },
+  "testData": {
+    "email": "jarvis+qa@chapman.cx",
+    "isTestFlag": true,
+    "passports": [
+      "Australian"
+    ],
+    "tripPurpose": "holiday",
+    "budgetLevel": "moderate",
+    "concerns": "QA automated test \u2014 please ignore",
+    "destinationsFile": "~/.openclaw/skills/web-qa/data/destinations.json",
+    "cleanupAfterHours": 24
+  },
+  "knownJobs": {
+    "done": "tfzzury7"
+  },
+  "resendDomainId": "eb7af0de-51a8-484f-a437-aecd5061bdc9",
+  "checks": {
+    "smoke": {
+      "intervalMinutes": 30
+    },
+    "functional": {
+      "intervalMinutes": 120
+    },
+    "e2e": {
+      "intervalMinutes": 360,
+      "timeoutMinutes": 20
+    },
+    "daily": {
+      "cronHKT": "02:00"
+    }
+  },
+  "thresholds": {
+    "responseTimeMs": 3000,
+    "e2eTimeoutMinutes": 20
+  }
+}

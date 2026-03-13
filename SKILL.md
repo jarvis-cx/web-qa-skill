@@ -101,7 +101,16 @@ Run ALL of these using `exec` with `curl`. Do NOT use the browser tool.
 
 5. **Verify report:** `GET {reportUrl}` — must return HTTP 200 and body must contain the destination name.
 
-6. **Cleanup:** Run `bash ~/.openclaw/skills/web-qa/scripts/cleanup-test-data.sh`
+6. **Test Stripe checkout + payment flow (using promo code ALPHA = 100% off):**
+   - POST `{baseUrl}/api/stripe/checkout` with `{"shortId": "{jobId}"}` — verify HTTP 200 and response contains `"url"` and `"stripe.com"`
+   - Open the Stripe checkout URL using the browser tool
+   - Enter test card: `4242 4242 4242 4242`, expiry `12/29`, CVC `123`, any ZIP
+   - Apply promo code: `ALPHA`
+   - Complete checkout — verify it succeeds (Stripe redirects back to `{baseUrl}/r/{jobId}`)
+   - Verify `GET {baseUrl}/api/jobs/{jobId}` returns `"is_paid": true`
+   - Verify `GET {baseUrl}/r/{jobId}` now serves the full (unblurred) report
+
+7. **Cleanup:** Run `bash ~/.openclaw/skills/web-qa/scripts/cleanup-test-data.sh`
 
 7. Record: destination, jobId, duration, pass/fail.
 
